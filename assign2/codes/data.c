@@ -11,7 +11,7 @@ int main() {
     int n = x3 - x1; // n corresponds to (x3 - x1)
 
     // Open the output.tex file for writing
-    FILE *file = fopen("output.tex", "w");
+    FILE *file = fopen("output.txt", "w");
 
     // Write the LaTeX header
     fprintf(file, "\\documentclass{article}\n");

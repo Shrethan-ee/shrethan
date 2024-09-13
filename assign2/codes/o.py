@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 
 # Example: Simulating the output reading from a file
-output_file_path = 'output.tex'
+output_file_path = 'output.txt'
 
 # Reading the ratio from the file
-with open("output.tex", 'r') as file:
+with open("output.txt", 'r') as file:
     output = file.read()
 
 # Parsing the ratio from the output
@@ -38,5 +38,5 @@ plt.legend()
 plt.axis('equal')
 
 # Show plot
-plt.show()
 plt.savefig('fig.png')
+plt.show()
