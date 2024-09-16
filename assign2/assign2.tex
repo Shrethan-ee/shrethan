@@ -18,7 +18,6 @@
 \usepackage{xcolor}
 \usepackage{txfonts}
 \usepackage{listings}
-\usepackage{xparse}
 \usepackage{enumitem}
 \usepackage{mathtools}
 \usepackage{gensymb}
@@ -54,7 +53,7 @@
 Question$\colon$
      Find the ratio in which $P\brak{4,5}$ divides the line segment joining $A\brak{2,3}$ and $B\brak{7,8}$\\
 
-sol
+solution $\colon$
 \begin{table}[h!]
  \centering
  \input{table.tex}
@@ -63,15 +62,15 @@ sol
  $P\myvec{4&5}$ divides $A$ and $B$ in the ratio $k\colon1$
 \begin{align}
     P&=\frac{\vec{A}+k\vec{B}}{k+1}\\
-P&=\frac{\vec{A}}{k+1}+\frac{k\vec{B}}{k+1}\\
-p&=\myvec{\Vec{A}&\Vec{B}}\myvec{\frac{1}{k+1}\\\frac{k}{k+1}}\\
-\myvec{4\\5}&=\myvec{2&7\\3&8}\myvec{\frac{1}{k+1}\\\frac{k}{k+1}}\\
-\myvec{4\\5}&=\myvec{\frac{2}{k+1}+\frac{7k}{k+1}\\\frac{3}{k+1}+\frac{8k}{k+1}}\\
-4&=\frac{2+7k}{k+1}\\
-4k+4&=2+7k\\
+\implies P&=\frac{\vec{A}}{k+1}+\frac{k\vec{B}}{k+1}\\
+\implies p&=\myvec{\Vec{A}&\Vec{B}}\myvec{\frac{1}{k+1}\\\frac{k}{k+1}}\\
+\implies \myvec{4\\5}&=\myvec{2&7\\3&8}\myvec{\frac{1}{k+1}\\\frac{k}{k+1}}\\
+\implies \myvec{4\\5}&=\myvec{\frac{2}{k+1}+\frac{7k}{k+1}\\\frac{3}{k+1}+\frac{8k}{k+1}}\\
+\implies 4&=\frac{2+7k}{k+1}\\
+\implies 4k+4&=2+7k\\
 3k&=2\\
 k&=\frac{2}{3}\\
- \implies k\colon1&=\frac{2}{3}\colon1\\
+\implies k\colon1&=\frac{2}{3}\colon1\\
  \end{align}
  \begin{figure}[h!]
   \centering

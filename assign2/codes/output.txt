@@ -1,4 +1,2 @@
-\documentclass{article}
-\begin{document}
-The ratio in which P divides AB is 2:3.
-\end{document}
+ 2:3.
+
