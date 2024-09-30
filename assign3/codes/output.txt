@@ -1,0 +1,2 @@
+Normal vector: <2, 5>
+Direction vector: <-5, 2>
