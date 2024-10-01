@@ -68,5 +68,5 @@ plt.grid() # minor
 plt.axis('equal')
 
 
-plt.savefig('fig.png')
+plt.savefig('/home/jsr/Desktop/shrethan/assign2/fig/fig.png')
 plt.show()

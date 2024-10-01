@@ -59,4 +59,4 @@ normal_vec, direction_vec = read_vectors("output.txt")
 
 # Plot the line and vectors
 plot_line_and_vectors(normal_vec, direction_vec)
-plt.savefig('fig.png')
+plt.savefig('/home/jsr/Desktop/shrethan/assign2/fig/fig.png')

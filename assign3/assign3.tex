@@ -51,18 +51,34 @@
 \textbf{Question:}
 Find the direction and normal vectors of the line $2x=-5y$.\\
 \solution\\
-
-direction vector$=m$\\
-normal vector$=n$\\
+%\begin{table}[h!]
+ %\centering
+ %\input{table.tex}
+ %\caption{variable used}
+%\end{table}\\
 \begin{align}
-\frac{x}{-5}&=\frac{y}{2}\\
- m&=\myvec{-5\\2}\\
- n&=\myvec{2\\5}
+    y&=mx+c\\
+   \implies\myvec{x\\y}&=\myvec{x\\mx+c}\\
+    \implies\myvec{x\\y}&=\myvec{0\\c}+x\myvec{1\\m}\\
+    m&=\myvec{1\\m}\\
+    m^Tn&=0\\
+    n&=\myvec{-m\\1}
+\end{align}
+where m,n are direction and normal vectors.
+\begin{align}
+    -5y&=2x\\
+    y&=\frac{2}{-5}x\\
+    \myvec{x\\y}&=\myvec{x\\ \frac{2}{-5}x}\\
+    \myvec{x\\y}&=x\myvec{1\\ \frac{2}{-5}}\\
+    m&=\myvec{1\\m}\\
+    \implies m&=\myvec{1\\ -\frac{2}{5}}\\
+    m^Tn&=0\\
+    n&=\myvec{-m\\1}\\
+  \implies  n&=\myvec{\frac{2}{5}\\1}
 \end{align}
  \begin{figure}[h!]
   \centering
   \includegraphics[width=1\linewidth]{fig/fig.png}
-  \caption{plot of m and n}
+  \caption{plot of A,B and P}
  \end{figure}
 \end{document}
-

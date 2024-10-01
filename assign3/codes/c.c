@@ -2,12 +2,11 @@
 
 int main() {
     // Normal vector of the line 2x + 5y = 0
-    int normal_x = 2;
-    int normal_y = 5;
-
-    // Direction vector, which is perpendicular to the normal vector
-    int direction_x = -5;
-    int direction_y = 2;
+    double normal_x = 2;
+    double normal_y = 5;
+    
+    double n=normal_x/normal_y;
+    double m=-n;
 
     // Open the file to write the output
     FILE *file = fopen("output.txt", "w");
@@ -17,8 +16,8 @@ int main() {
     }
 
     // Write the vectors to the file
-    fprintf(file, "Normal vector: <%d, %d>\n", normal_x, normal_y);
-    fprintf(file, "Direction vector: <%d, %d>\n", direction_x, direction_y);
+    fprintf(file, "n<%.1lf, 1>\n", n);
+    fprintf(file, "m<1,%.1lf>\n", m);
 
     // Close the file
     fclose(file);
