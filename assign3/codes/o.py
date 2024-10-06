@@ -1,62 +1,83 @@
-import matplotlib.pyplot as plt
+import sys  # for path to external scripts
+sys.path.insert(0, '/home/jsr/Desktop/matgeo/codes/CoordGeo')  # path to my scripts
 import numpy as np
+import numpy.linalg as LA
+import matplotlib.pyplot as plt
 
-# Function to read the vectors from output.txt
-def read_vectors(filename):
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-        # Extract the normal vector
-        normal_line = lines[0].strip().split("<")[1].split(">")[0].split(", ")
-        normal_vector = [int(normal_line[0]), int(normal_line[1])]
-        # Extract the direction vector
-        direction_line = lines[1].strip().split("<")[1].split(">")[0].split(", ")
-        direction_vector = [int(direction_line[0]), int(direction_line[1])]
-    return normal_vector, direction_vector
+# Local imports (assuming these scripts exist and are correct)
+from line.funcs import *
+from triangle.funcs import *
+from conics.funcs import circ_gen
 
-# Function to plot the line and vectors
-def plot_line_and_vectors(normal_vector, direction_vector):
-    # Define the line equation 2x + 5y = 0
-    def line_equation(x):
-        return -(2/5) * x
+def read_data_from_file(filename):
+    """Reads data from a file and returns it as a NumPy array."""
+    data = np.loadtxt(filename, delimiter=',')
+    return data
 
-    # Create a range of x values
-    x_vals = np.linspace(-10, 10, 400)
-    y_vals = line_equation(x_vals)
+# Load data from file
+filename = 'output.txt'
+data = read_data_from_file(filename)
 
-    # Create a plot
-    plt.figure(figsize=(8, 8))
-    
-    # Plot the line
-    plt.plot(x_vals, y_vals, 'b', label="Line: 2x + 5y = 0")
-    
-    # Plot the normal vector from the origin
-    plt.quiver(0, 0, normal_vector[0], normal_vector[1], angles='xy', scale_units='xy', scale=1, color='r', label='Normal Vector')
-    
-    # Plot the direction vector from the origin
-    plt.quiver(0, 0, direction_vector[0], direction_vector[1], angles='xy', scale_units='xy', scale=1, color='g', label='Direction Vector')
-    
-    # Set plot limits
-    plt.xlim(-10, 10)
-    plt.ylim(-10, 10)
-    
-    # Add labels and grid
-    plt.axhline(0, color='black',linewidth=0.5)
-    plt.axvline(0, color='black',linewidth=0.5)
-    plt.grid(True)
-    plt.xlabel('X-axis')
-    plt.ylabel('Y-axis')
-    plt.title('Line and Vectors Plot')
-    
-    # Show legend
-    plt.legend()
+# Define points N and O
+N = data[0]
+M = data[1]
+O = np.array([0, 0])  # O is the origin
 
-    # Display the plot
-    plt.show()
-    
+# Calculate NO and MO vectors and their magnitudes
+NO_vector = N - O
+NO_magnitude = np.linalg.norm(NO_vector)
+MO_vector = M - O
+MO_magnitude = np.linalg.norm(MO_vector)
 
-# Read vectors from the file
-normal_vec, direction_vec = read_vectors("output.txt")
+# Generate line between points N and O, and M and O
+x_NO = line_gen(N.reshape(-1, 1), O.reshape(-1, 1))  # Ensure N and O are column vectors
+x_MO = line_gen(M.reshape(-1, 1), O.reshape(-1, 1))
 
-# Plot the line and vectors
-plot_line_and_vectors(normal_vec, direction_vec)
-plt.savefig('/home/jsr/Desktop/shrethan/assign2/fig/fig.png')
+# Create figure and axis
+fig, ax = plt.subplots()
+
+# Plot dotted lines for NO and MO
+ax.plot([O[0], N[0]], [O[1], N[1]], linestyle='--', color='green')
+ax.plot([O[0], M[0]], [O[1], M[1]], linestyle='--', color='purple')
+
+# Plot the arrows for NO and MO vectors
+ax.quiver(O[0], O[1], NO_vector[0], NO_vector[1], angles='xy', scale_units='xy', 
+          scale=NO_magnitude, color='green', label='Normal vector', width=0.005)
+
+ax.quiver(O[0], O[1], MO_vector[0], MO_vector[1], angles='xy', scale_units='xy', 
+          scale=MO_magnitude, color='purple', label='Direction vector', width=0.005)
+
+# Identity matrix and standard basis vectors
+I = np.eye(2)
+e1 = I[:, [0]]
+e2 = I[:, [1]]
+
+# Line parameters (line in normal form)
+n1 = np.array([2, 5]).reshape(-1, 1)  # Normal vector
+c1 = 0
+
+k1 = -4  # Lower bound
+k2 = 5   # Upper bound
+
+# Generate line with normal form
+x_A = line_norm(n1, c1, k1, k2)
+
+# Plot the generated line
+ax.plot(x_A[0, :], x_A[1, :], label='$(2~~~~~5)\mathbf{x}=0,s=-0.4$')
+
+# Customize the plot appearance
+ax.spines['top'].set_color('none')
+ax.spines['left'].set_position('zero')
+ax.spines['right'].set_color('none')
+ax.spines['bottom'].set_position('zero')
+
+# Show grid, legend, and equal axis scaling
+plt.legend(loc='best')
+plt.grid()  # Display grid
+plt.axis('equal')  # Equal scaling on both axes
+
+# Show the plot
+plt.show()
+plt.savefig('/home/jsr/Desktop/shrethan/assign3/fig/fig.png')
+
+

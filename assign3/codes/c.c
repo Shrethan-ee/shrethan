@@ -16,8 +16,8 @@ int main() {
     }
 
     // Write the vectors to the file
-    fprintf(file, "n<%.1lf, 1>\n", n);
-    fprintf(file, "m<1,%.1lf>\n", m);
+    fprintf(file, "%.1lf, 1\n", n);
+    fprintf(file, "1,%.1lf\n", m);
 
     // Close the file
     fclose(file);

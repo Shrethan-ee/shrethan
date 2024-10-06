@@ -57,12 +57,12 @@ Find the direction and normal vectors of the line $2x=-5y$.\\
  %\caption{variable used}
 %\end{table}\\
 \begin{align}
-    y&=mx+c\\
-   \implies\myvec{x\\y}&=\myvec{x\\mx+c}\\
-    \implies\myvec{x\\y}&=\myvec{0\\c}+x\myvec{1\\m}\\
-    m&=\myvec{1\\m}\\
+    y&=sx+c\\
+   \implies\myvec{x\\y}&=\myvec{x\\sx+c}\\
+    \implies\myvec{x\\y}&=\myvec{0\\c}+x\myvec{1\\s}\\
+    m&=\myvec{1\\s}\\
     m^Tn&=0\\
-    n&=\myvec{-m\\1}
+    n&=\myvec{-s\\1}
 \end{align}
 where m,n are direction and normal vectors.
 \begin{align}
@@ -70,15 +70,15 @@ where m,n are direction and normal vectors.
     y&=\frac{2}{-5}x\\
     \myvec{x\\y}&=\myvec{x\\ \frac{2}{-5}x}\\
     \myvec{x\\y}&=x\myvec{1\\ \frac{2}{-5}}\\
-    m&=\myvec{1\\m}\\
+    m&=\myvec{1\\s}\\
     \implies m&=\myvec{1\\ -\frac{2}{5}}\\
     m^Tn&=0\\
-    n&=\myvec{-m\\1}\\
+    n&=\myvec{-s\\1}\\
   \implies  n&=\myvec{\frac{2}{5}\\1}
 \end{align}
  \begin{figure}[h!]
   \centering
   \includegraphics[width=1\linewidth]{fig/fig.png}
-  \caption{plot of A,B and P}
+  \caption{plot of direction and normal vector}
  \end{figure}
 \end{document}
