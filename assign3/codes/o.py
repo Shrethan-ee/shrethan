@@ -78,6 +78,6 @@ plt.axis('equal')  # Equal scaling on both axes
 
 # Show the plot
 plt.show()
-plt.savefig('/home/jsr/Desktop/shrethan/assign3/fig/fig.png')
+#plt.savefig('/home/jsr/Desktop/shrethan/assign3/fig/fig.png')
 
 
