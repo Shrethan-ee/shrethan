@@ -1,0 +1,18 @@
+\frametitle{Python Code }
+
+\begin{minted}[bgcolor=bg, linenos, fontsize=\small, breaklines]{python}
+# Modify axes visibility
+ax = plt.gca()
+ax.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+ax.spines['bottom'].set_visible(False)
+
+plt.legend(loc='best')
+plt.grid()
+plt.axis('equal')
+
+# Save and display plot
+plt.savefig('/home/jsr/Desktop/shrethan/presentation/fig/fig.png')
+plt.show()
+\end{minted}

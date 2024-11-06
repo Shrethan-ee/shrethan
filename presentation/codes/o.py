@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Local imports (assuming these scripts exist and are correct)
-from line.funcs import line_gen
+from line.funcs import *
 from triangle.funcs import *
 from conics.funcs import circ_gen
 
@@ -32,13 +32,16 @@ x_AB = line_gen(A, B)
 # Plotting line AB
 plt.plot(x_AB[0,:], x_AB[1,:], label='$AB$')
 
-# Scatter plot of points A, B, and P
-plt.scatter([A[0, 0], B[0, 0], P[0, 0]], [A[1, 0], B[1, 0], P[1, 0]])
-
-# Manually label points A, B, and P without a loop
-plt.annotate('A\n(2, 3)', (A[0, 0], A[1, 0]), textcoords="offset points", xytext=(20, -10), ha='center')
-plt.annotate('B\n(7, 8)', (B[0, 0], B[1, 0]), textcoords="offset points", xytext=(20, -10), ha='center')
-plt.annotate(f'P\n({P[0, 0]:.1f}, {P[1, 0]:.1f})', (P[0, 0], P[1, 0]), textcoords="offset points", xytext=(20, -10), ha='center')
+# Labeling the coordinates
+tri_coords = np.block([[A, B, P]])
+plt.scatter(tri_coords[0,:], tri_coords[1,:])
+vert_labels = ['A','B','P']
+for i, txt in enumerate(vert_labels):
+    plt.annotate(f'{txt}\n({tri_coords[0,i]:.0f}, {tri_coords[1,i]:.0f})',
+                 (tri_coords[0,i], tri_coords[1,i]), # Point to label
+                 textcoords="offset points", # Position of text
+                 xytext=(20,-10), # Offset from point
+                 ha='center') # Horizontal alignment
 
 # Modify axes visibility
 ax = plt.gca()
