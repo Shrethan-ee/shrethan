@@ -10,5 +10,5 @@ plt.grid()
 plt.axis('equal')
 
 # Save and display plot
-plt.savefig('/home/jsr/Desktop/shrethan/presentation/fig/fig.png')
+plt.savefig('../fig/fig.png')
 plt.show()
