@@ -60,7 +60,7 @@
 Solve the following differential equation:
 
 \begin{align}
- \frac{d^2y}{dx^2} + x \frac{dy}{dx} + xy &= 0
+ y^{\prime\prime} + x y^{\prime} + xy &= 0
 \end{align}
 \solution
 
@@ -71,66 +71,52 @@ By first principle of derivatives,
 \end{align}
 
 \begin{align}
- \frac{d^2y}{dx^2} + x \frac{dy}{dx} + xy &= 0
+ y^{\prime\prime} + x y^{\prime} + xy &= 0
 \end{align}
 
 Rewriting the given equation, we get:
 \begin{align}
-\frac{d^2y}{dx^2} &= -x \frac{dy}{dx} - xy
+  y^{\prime\prime}&= -xy^{\prime} - xy
 \end{align}
 
 To solve this equation numerically, we apply Euler's method. We start by introducing the following substitutions:
 
-Let:
 \begin{align}
-y_1 = y, \quad y_2 = \frac{dy}{dx}
+  y^{\prime}_{n+1}=y^{\prime}_{n}+h\brak{y^{\prime\prime}_{n}}
+  \end{align}
+      
+  Then when we substition eq $\brak{0.5}$ in eq $\brak{0.6}$
+\begin{align}
+    y^{\prime}_{n+1}=y^{\prime}_{n}+h\brak{-x y^{\prime}_{n}-xy_{n}}
 \end{align}
-
-Thus, the system becomes:
+then 
 \begin{align}
-y_1^\prime &= y_2
-\end{align}
-\begin{align}
-y_2^\prime &= -xy_2 - xy_1
-\end{align}
-
-The system of equations in matrix form:
-\begin{align}
-\vec{y^\prime} &= \begin{bmatrix} 
-y_2 \\ 
--xy_2 - xy_1 
-\end{bmatrix}
-\end{align}
-
-Using Euler's method, the update formulas become:
-\begin{align}
-y_1(x+h) &= y_1(x) + h \cdot y_2(x)
+    y_{n+1}=y_{n}+h\brak{y^{\prime}_{n}}
 \end{align}
 \begin{align}
-y_2(x+h) &= y_2(x) + h \cdot \left( -xy_2 -x y_1 \right)
+  y_{n+1}=y_{n}+h\brak{y^{\prime}_{n-1}}+h\brak{-xy^{\prime}_{n-1}-xy_{n-1}}
 \end{align}
-
-This can be expressed in matrix form as:
+We need to assume two initial conditions as it is a second order differential equation. \\So here we assume the initial conditions as 
 \begin{align}
-    \vec{y}_{n+1} &= \vec{y}_n + h \begin{bmatrix}
-    0 & 1 \\ 
-    -x & -x 
-    \end{bmatrix} \cdot \vec{y}_n
+    x_0=0\\y_0=0\\y^\prime_0=1\\h=0.1
 \end{align}
-
-We will assume two initial conditions:
+substitute eq $\brak{0.10}$, eq $\brak{0.11}$ and eq $\brak{0.10}$ in eq $\brak{0.1}$\\ we get 
 \begin{align}
-x_0 = 0,\quad y_0 = 0
+    y^{\prime\prime}\brak{0}=0
 \end{align}
-substitute above initial condition in the eq(0.10) and eq(0.11) ..so on we will get all other y values 
-Now, applying Euler's method and iterating, we obtain the numerical solution. The following plot represents the solution based on these initial conditions.
+Substitute eq $\brak{0.10}$ in eq $\brak{0.8}$
+\begin{align}
+    y_1=y_0+y^\prime_0(0.1)\\
+    y_1=0.1
+\end{align}
+For the rest of the points use eq $\brak{0.8}$ we get the other points.
 
  \begin{figure}[h!]
     \centering
     \includegraphics[width=1\columnwidth]{figure/fig.png} 
-    \caption{Numerical Solution}
+    \caption{plot}
     \label{stemplot}
-\end{figure}
+ \end{figure}
 
 \end{document}
 
