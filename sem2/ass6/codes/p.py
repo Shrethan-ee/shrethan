@@ -13,7 +13,7 @@ dll.complement_probability.restype = ctypes.c_float
 p_a = 0.54
 p_b = 0.69
 p_a_p_b = 0.35
-n = 1000000  # Large n for better accuracy
+n = 10 # Large n for better accuracy
 
 # Compute P(A' ∩ B') using C function
 p_a_comp_b_comp = dll.complement_probability(p_a, p_b, p_a_p_b, n)
